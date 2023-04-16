@@ -1,0 +1,31 @@
+name: CI-S02
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm -v
+  
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: xdg-open https://projeto-web-sorteio.netlify.app
+      - uses: AppThreat/sast-scan-action@master
+        with:
+          type: "nodejs"
+          
+  deploy-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Terminou =), será que vc acertou o número? =D"
