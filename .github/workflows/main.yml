@@ -29,7 +29,7 @@ jobs:
       - run: set -e
       - run: echo "Starting X virtual framebuffer (Xvfb) in background..."
       - run: Xvfb -ac :99 -screen 0 1280x1024x16 > /dev/null 2>&1 &
-      - run: export DISPLAY=:10.0
+      - run: export DISPLAY=localhost:0.0
       - run: exec "$@"
       - run: firefox https://projeto-web-sorteio.netlify.app
       - uses: AppThreat/sast-scan-action@master
