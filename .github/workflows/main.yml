@@ -17,15 +17,12 @@ jobs:
         node-version: '18.14.2'
     - run: node -v
     - run: npm -v
-#    - run: sudo apt-get install firefox
-#    - run: firefox --version
   
   test-job:
     needs: build-job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-#      - run: firefox https://projeto-web-sorteio.netlify.app
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "nodejs"
@@ -33,6 +30,15 @@ jobs:
   deploy-job:
     needs: test-job
     runs-on: ubuntu-latest
+    container:
+      image: michelleamesquita/sast:latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo "Terminou =), será que vc acertou o número? =D"
+      
+      - name: Start SAST
+        uses: docker://michelleamesquita/sast:latest
+        with:
+          options: -v $PWD/:/app
+          args: -d=./app/ -l=python
+      
+      - run: echo "Terminou =)"
