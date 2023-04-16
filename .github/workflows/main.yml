@@ -17,15 +17,14 @@ jobs:
         node-version: '18.14.2'
     - run: node -v
     - run: npm -v
-    - run: sudo apt-get install firefox
-    - run: firefox --version
+#    - run: sudo apt-get install firefox
+#    - run: firefox --version
   
   test-job:
     needs: build-job
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: env | grep SSH
 #      - run: firefox https://projeto-web-sorteio.netlify.app
       - uses: AppThreat/sast-scan-action@master
         with:
