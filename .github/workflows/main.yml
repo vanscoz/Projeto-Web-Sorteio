@@ -40,6 +40,11 @@ jobs:
     needs: test-job
     runs-on: ubuntu-latest
     steps:
+      - name: Acessando o Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: Finalizando
       - uses: actions/checkout@v3
       - run: echo "Terminou =)"
