@@ -25,13 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: sudo apt-get -qy --no-install-recommends install xvfb
-      - run: set -e
-      - run: echo "Starting X virtual framebuffer (Xvfb) in background..."
-      - run: Xvfb -ac :99 -screen 0 1280x1024x16 > /dev/null 2>&1 &
-      - run: export DISPLAY=:1
-      - run: exec "$@"
-      - run: firefox https://projeto-web-sorteio.netlify.app
+      - run: env | grep SSH
+#      - run: firefox https://projeto-web-sorteio.netlify.app
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "nodejs"
