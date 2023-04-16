@@ -11,7 +11,6 @@ jobs:
   build-job:
     runs-on: ubuntu-latest
     steps:
-    - name: Versões
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
@@ -22,16 +21,8 @@ jobs:
   test-job:
     needs: build-job
     runs-on: ubuntu-latest
-    container:
-      image: michelleamesquita/sast:latest
     steps:
       - uses: actions/checkout@v3
-      - name: Testes 1
-        uses: docker://michelleamesquita/sast:latest
-        with:
-          options: -v $PWD/:/app
-          args: -d=./app/ -l=node.js
-      - name: Testes 2
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "nodejs"
@@ -39,7 +30,15 @@ jobs:
   deploy-job:
     needs: test-job
     runs-on: ubuntu-latest
-    
+    container:
+      image: michelleamesquita/sast:latest
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Start SAST
+        uses: docker://michelleamesquita/sast:latest
+        with:
+          options: -v $PWD/:/app
+          args: -d=./app/ -l=python
+      
       - run: echo "Terminou =)"
