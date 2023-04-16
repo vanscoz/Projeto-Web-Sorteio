@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: xdg-open https://projeto-web-sorteio.netlify.app
+      - run: firefox https://projeto-web-sorteio.netlify.app
       - uses: AppThreat/sast-scan-action@master
         with:
           type: "nodejs"
