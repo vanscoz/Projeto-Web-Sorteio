@@ -47,6 +47,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: .
           push: true
           tags: luishpaiva/app:latest, luishpaiva/app:${{ github.run_number }}
       - run: echo "Terminou =)"
