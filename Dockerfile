@@ -1,8 +1,8 @@
-FROM node:19-alpine
+FROM node:latest
 
-WORKDIR /app
+WORKDIR mkdir /app
 
-COPY . /app
+COPY /app
 
 RUN npm install -g npm@latest
 
