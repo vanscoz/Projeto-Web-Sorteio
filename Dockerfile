@@ -1,8 +1,10 @@
-FROM node:latest
+FROM ubuntu:latest
 
-WORKDIR mkdir /app
+RUN mkdir /app
 
-COPY /app
+WORKDIR /app
+
+COPY package.json /app
 
 RUN npm install -g npm@latest
 
@@ -12,6 +14,8 @@ RUN npm rm -rf node_modules && rm package-lock.json
 
 RUN npm install
 
-EXPOSE 80
+EXPOSE 3500
+
+ENV PORT 3500
 
 CMD npm run start
