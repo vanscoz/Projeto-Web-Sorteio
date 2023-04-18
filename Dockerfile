@@ -1,19 +1,11 @@
-FROM node:alpine
+FROM node:14
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY . /app
-
-RUN npm install -g npm@latest
-
-RUN npm cache clean --force
-
-RUN npm rm -rf node_modules && rm package-lock.json
+COPY package*.json app.js ./
 
 RUN npm install
 
-EXPOSE 80
+EXPOSE 3500
 
-ENV PORT 3500
-
-CMD [ "npm", "run", "start" ]
+CMD [ "node", "app.js"]
