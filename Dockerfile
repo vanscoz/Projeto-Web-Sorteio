@@ -12,6 +12,8 @@ RUN npm rm -rf node_modules && rm package-lock.json
 
 RUN npm install
 
+ENTRYPOINT npm start
+
 EXPOSE 3500
 
 ENV PORT 3500
