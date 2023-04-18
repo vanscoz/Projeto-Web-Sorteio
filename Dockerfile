@@ -1,11 +1,13 @@
-FROM node:19.5.0-alpine
+FROM ubuntu:latest
 
-WORKDIR /app
+RUN apt update
 
-COPY . /app
+RUN apt install –y apache2
 
-RUN npm install
+RUN apt install –y apache2-utils
+
+RUN apt clean
 
 EXPOSE 3500
 
-CMD ["npm","start"]
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
