@@ -1,9 +1,11 @@
-FROM node
+FROM node:latest
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY . /usr/src/app
+COPY . /app
 
 RUN npm install
 
-CMD "npm" "start"
+EXPOSE 3500
+
+CMD ["npm","start"]
