@@ -12,10 +12,8 @@ RUN npm rm -rf node_modules && rm package-lock.json
 
 RUN npm install
 
-RUN npm run build
-
 EXPOSE 80
 
 ENV PORT 3500
 
-CMD npm run start
+CMD [ "npm", "run", "pm2" ]
