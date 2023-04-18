@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM node:alpine
 
 RUN mkdir /app
 
@@ -16,4 +16,4 @@ EXPOSE 3500
 
 ENV PORT 3500
 
-CMD npm run start
+CMD ["npm", "start"]
