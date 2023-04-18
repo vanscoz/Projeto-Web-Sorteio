@@ -16,4 +16,4 @@ EXPOSE 80
 
 ENV PORT 3500
 
-CMD [ "npm", "run", "pm2" ]
+CMD [ "npm", "run", "start" ]
