@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Checando versões
     - uses: actions/checkout@v3
+    - name: Preparando...
     - uses: actions/setup-node@v3
       with:
         node-version: '18.14.2'
