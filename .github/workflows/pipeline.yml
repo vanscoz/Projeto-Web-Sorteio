@@ -1,6 +1,8 @@
+name: DevOps Somativa02 LHP VSB
 on: push
 jobs:
   build-node:
+    name: Build
     runs-on: ubuntu-latest
     container: node:16
     steps:
