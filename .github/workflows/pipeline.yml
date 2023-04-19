@@ -2,12 +2,11 @@ name: DevOps Somativa02 LHP VSB
 on: push
 jobs:
   build-node:
-    name: Build
+    name: Fase de Build
     runs-on: ubuntu-latest
-    container: node:16
     steps:
-      - run: node --version
-      - run: npm --version
       - uses: actions/checkout@v3
       - run: npm install
-      - run: node app.js
+      - run: npm run build
+      - run: node --version
+      - run: npm --version
