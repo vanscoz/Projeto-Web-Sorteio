@@ -58,7 +58,6 @@ jobs:
       - name: Build e push do projeto
         uses: docker/build-push-action@v4
         with:
-          context: .
           push: true
           tags: luishpaiva/app:latest, luishpaiva/app:${{ github.run_number }}
       - name: Finalizando
