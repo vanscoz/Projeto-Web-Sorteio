@@ -60,6 +60,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: luishpaiva/app:latest, luishpaiva/app:${{ github.run_number }}
+          tags: luishpaiva/webapp:latest, luishpaiva/webapp:${{ github.run_number }}
       - name: Finalizando
         run: echo "Pipeline finalizado com sucesso =)"
