@@ -4,4 +4,4 @@ WORKDIR /webapp
 
 COPY . /usr/share/nginx/html
 
-EXPOSE 3500
+EXPOSE 3000
